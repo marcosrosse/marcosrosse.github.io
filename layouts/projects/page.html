@@ -1,0 +1,36 @@
+{{ define "main" }}
+<article class="wrap project-page">
+  <p class="crumb"><a href="{{ .Parent.RelPermalink }}">← All projects</a></p>
+  <header class="project-page-head">
+    <p class="status status-{{ .Params.status | urlize }}">{{ .Params.status }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="lede">{{ .Params.summary }}</p>
+    {{ partial "project-actions.html" . }}
+    {{ if and (not .Params.repo) .Params.private }}<p class="note">Source lives on my private, self-hosted Forgejo; I can walk you through it on a call.</p>{{ end }}
+  </header>
+
+  <div class="project-grid">
+    <aside class="setup-panel" aria-labelledby="setup-title">
+      <h2 id="setup-title">Setup</h2>
+      <ol class="flow flow-vertical">
+        {{ range .Params.setup }}<li>{{ . }}</li>{{ end }}
+      </ol>
+      <h2>Stack</h2>
+      <ul class="stack">
+        {{ range .Params.stack }}<li>{{ . }}</li>{{ end }}
+      </ul>
+    </aside>
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+
+  <footer class="project-page-foot">
+    {{ partial "project-actions.html" . }}
+    <nav class="pager" aria-label="More projects">
+      {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
+      {{ with .NextInSection }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+    </nav>
+  </footer>
+</article>
+{{ end }}

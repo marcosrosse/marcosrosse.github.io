@@ -1,0 +1,9 @@
+{{ define "main" }}
+<section class="wrap page-head">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+</section>
+<section class="wrap">
+  {{ range .Pages.ByWeight }}{{ partial "project-row.html" . }}{{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,17 @@
+<article class="project">
+  <div class="project-head">
+    <p class="status status-{{ .Params.status | urlize }}">{{ .Params.status }}</p>
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p class="summary">{{ .Params.summary }}</p>
+    {{ partial "project-actions.html" . }}
+  </div>
+  <ol class="flow" aria-label="Setup of {{ .Title }}">
+    {{ range .Params.setup }}<li>{{ . }}</li>{{ end }}
+  </ol>
+  <div class="project-foot">
+    <ul class="stack" aria-label="Stack">
+      {{ range .Params.stack }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    <a class="more" href="{{ .RelPermalink }}">Setup and details<span class="sr-only"> of {{ .Title }}</span> →</a>
+  </div>
+</article>

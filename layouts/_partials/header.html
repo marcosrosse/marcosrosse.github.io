@@ -1,0 +1,18 @@
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    <nav aria-label="Main">
+      <ul>
+        {{ $current := . }}
+        {{- /* Writing appears only once a post is published (drafts don't count). */ -}}
+        {{ $hasPosts := where site.RegularPages "Section" "posts" }}
+        {{ range site.Menus.main }}
+          {{ if and (eq .PageRef "/posts") (not $hasPosts) }}{{ continue }}{{ end }}
+          {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+          <li><a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{ end }}
+        <li><a href="mailto:{{ site.Params.email }}">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

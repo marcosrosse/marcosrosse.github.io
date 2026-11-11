@@ -1,0 +1,7 @@
+/public/
+/resources/_gen/
+.hugo_build.lock
+.DS_Store
+
+# Projects kept out of the public repo (move back into content/projects/ to publish)
+/_private/

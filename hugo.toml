@@ -1,0 +1,40 @@
+baseURL = "https://marcosrosse.github.io/"
+locale = "en"
+title = "Marcos Rosse"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  # Display name everywhere, including the CV (overrides basics.name in data/resume.json).
+  author = "Marcos Rosse"
+  role = "Site Reliability Engineer"
+  location = "Lisbon, Portugal"
+  description = "Site Reliability Engineer in Lisbon. Platforms on Kubernetes and Incus, infrastructure as code, GitOps and observability."
+  email = "contact@mrosse.com"
+  github = "https://github.com/marcosrosse"
+  # Leave empty to hide the link.
+  linkedin = "https://www.linkedin.com/in/marcosrosse/"
+  # CV PDF generated in CI by scripts/cv-pdf.sh (not committed). Empty hides the button.
+  cvPDF = "Marcos-Rosse-CV.pdf"
+
+[menus]
+  [[menus.main]]
+    name = "CV"
+    pageRef = "/"
+    weight = 5
+  [[menus.main]]
+    name = "Projects"
+    pageRef = "/projects"
+    weight = 10
+  [[menus.main]]
+    name = "Writing"
+    pageRef = "/posts"
+    weight = 20
+
+[markup.highlight]
+  noClasses = false
+  style = "github"
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]

@@ -1,0 +1,10 @@
+{{- /* Buttons for a project page. repo = public GitHub URL, live = public site URL.
+     "Request a demo" always shows; it is the only path to private projects. */ -}}
+{{- $subject := printf "Demo request: %s" .Title -}}
+{{- $body := printf "Hi Marcos,\n\nI saw %s on your portfolio (%s) and would like to see a demo.\n\n" .Title .Permalink -}}
+{{- $q := printf "subject=%s&body=%s" (urlquery $subject) (urlquery $body) | replaceRE `\+` "%20" -}}
+<div class="actions">
+  {{ with .Params.live }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Open live site<span class="sr-only"> for {{ $.Title }} (opens in a new tab)</span></a>{{ end }}
+  {{ with .Params.repo }}<a class="btn" href="{{ . }}" target="_blank" rel="noopener">View on GitHub<span class="sr-only">: {{ $.Title }} (opens in a new tab)</span></a>{{ end }}
+  <a class="btn {{ if not (or .Params.live .Params.repo) }}btn-primary{{ end }}" href="mailto:{{ site.Params.email }}?{{ $q | safeURL }}">Request a demo<span class="sr-only"> of {{ .Title }}</span></a>
+</div>

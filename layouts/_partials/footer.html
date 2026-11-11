@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>{{ site.Params.author }} · {{ site.Params.role }} · {{ site.Params.location }}</p>
+    <ul>
+      <li><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></li>
+      {{ with site.Params.github }}<li><a href="{{ . }}">GitHub</a></li>{{ end }}
+      {{ with site.Params.linkedin }}<li><a href="{{ . }}">LinkedIn</a></li>{{ end }}
+      {{ if where site.RegularPages "Section" "posts" }}<li><a href="{{ "posts/index.xml" | relURL }}">RSS</a></li>{{ end }}
+    </ul>
+  </div>
+</footer>

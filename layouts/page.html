@@ -1,0 +1,12 @@
+{{ define "main" }}
+<article class="wrap post">
+  {{ with .Parent }}<p class="crumb"><a href="{{ .RelPermalink }}">← {{ .Title }}</a></p>{{ end }}
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{ if eq .Section "posts" }}
+      <p class="meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time> · {{ .ReadingTime }} min read</p>
+    {{ end }}
+  </header>
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}
