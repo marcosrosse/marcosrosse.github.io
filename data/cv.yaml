@@ -5,15 +5,15 @@
 
 basics:
   name: Marcos Rosse
-  label: Site Reliability Engineer
+  label: Site Reliability and Platform Engineer
   email: interviews@mrosse.com
   url: https://marcosrosse.github.io/
   summary: >-
     Site Reliability Engineer in Lisbon with six years in DevOps and SRE and six before that as a
-    Linux sysadmin. At Sky I keep a set of streaming applications and their databases reliable for
-    services across Europe and the US, including Peacock, SkyShowtime and NOW TV. Before that I built
-    CI/CD and moved banks and telecom operators onto OpenShift. Most of my work is infrastructure as
-    code, databases, observability, and making releases and traffic peaks routine.
+    Linux sysadmin. At Sky I keep streaming applications reliable for services across Europe and
+    the US, including Peacock, SkyShowtime and NOW TV. Before that I built CI/CD and moved banks
+    and telecom operators onto OpenShift. My focus is platform engineering: infrastructure as code,
+    CI/CD, observability and edge delivery, and making releases and traffic peaks routine.
   location:
     city: Lisbon
     countryCode: PT
@@ -38,10 +38,9 @@ work:
       we support run on what we provide.
     highlights:
       - Support a set of applications the streaming platforms depend on, through releases, incidents and capacity planning for live sports peaks such as NFL games.
-      - Deploy and run their database clusters on AWS (RDS and Aurora), MongoDB Atlas, Elastic Cloud and Couchbase.
-      - Own observability and alerting for these applications and their data with Prometheus, Thanos, Grafana and Alertmanager, including SLOs for the services we support, certificate expiry checks, and alert routing to Slack and incident tooling.
+      - Own observability and alerting for these applications with Prometheus, Thanos, Grafana and Alertmanager, including SLOs for the services we support, certificate expiry checks, and alert routing to Slack and incident tooling.
       - Manage the Akamai configuration our applications use, including delivery properties, Global Traffic Management (GTM), Cloudlets, WAF security policies and TLS certificates.
-      - Provision AWS resources as code with Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
+      - Provision AWS resources and managed data services (Aurora, MongoDB Atlas, Elastic Cloud, Couchbase) as code with Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
       - Maintain the GitHub Actions and Jenkins pipelines that deploy our services onto the shared EKS clusters.
       - Patch vulnerabilities on Linux hosts and in internal code, and share the on-call rotation.
 
@@ -122,14 +121,15 @@ skills:
     keywords: [GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Flux CD]
   - name: Observability
     keywords: [Prometheus, Thanos, Alertmanager, Grafana, Datadog, Elasticsearch, SLIs and SLOs]
-  - name: Databases and messaging
-    keywords: [Amazon RDS and Aurora, MongoDB Atlas, Elastic Cloud, Couchbase, PostgreSQL, Redis, Kafka]
   - name: Security
     keywords: [HashiCorp Vault, SOPS, vulnerability remediation]
   - name: Languages
     keywords: [Go, Python, Bash]
   - name: Linux and virtualisation
     keywords: [Ubuntu, RHEL, Incus, XenServer]
+  # Provisioned and observed as a platform engineer; not looking for DBA work.
+  - name: Managed data services
+    keywords: [Amazon Aurora, MongoDB Atlas, Elastic Cloud, Couchbase, Kafka]
 
 languages:
   - language: Portuguese
