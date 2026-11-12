@@ -37,12 +37,13 @@ work:
       shared EKS clusters and Akamai CDN owned by other platform teams, and the application teams
       we support run on what we provide.
     highlights:
-      - Support a set of applications the streaming platforms depend on, through releases, incidents and capacity planning for live sports peaks such as NFL games.
-      - Own observability and alerting for these applications with Prometheus, Thanos, Grafana and Alertmanager, including SLOs for the services we support, certificate expiry checks, and alert routing to Slack and incident tooling.
-      - Manage the Akamai configuration our applications use, including delivery properties, Global Traffic Management (GTM), Cloudlets, WAF security policies and TLS certificates.
-      - Deploy and run the AWS resources our applications need as code with Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
-      - Maintain the GitHub Actions and Jenkins pipelines that deploy our services onto the shared EKS clusters.
-      - Patch vulnerabilities on Linux hosts and in internal code, and share the on-call rotation.
+      - Found a latent misconfiguration in more than 30 Akamai properties (SNI disabled on origin connections) that would have taken services down once the EKS team changed its load balancers, and fixed it across all of them ahead of the change.
+      - Wrote a Python Prometheus exporter for GitHub service health (Git operations, Actions, pull requests, issues), with dashboards and alerts, after GitHub outages kept disrupting the team's work.
+      - "Automated credentials for new RDS and DocumentDB instances: admin and user passwords are generated and stored in HashiCorp Vault, and Terragrunt reads them at creation time, so nobody handles a secret by hand."
+      - Support the applications through releases, incidents and live sports peaks such as NFL games, and share the on-call rotation.
+      - Own their observability and alerting with Prometheus, Thanos, Grafana and Alertmanager, including SLOs, certificate expiry checks, and alert routing to Slack and incident tooling.
+      - "Manage the Akamai configuration they use: delivery properties, Global Traffic Management (GTM), Cloudlets, WAF security policies and TLS certificates."
+      - Deploy and run the AWS resources they need as code with Terraform and Terragrunt, maintain the GitHub Actions and Jenkins pipelines onto the shared EKS clusters, scale non-production down outside traffic windows to cut cost, and patch vulnerabilities on hosts and in code.
 
   - name: Velv
     position: DevOps Engineer
