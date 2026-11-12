@@ -1,0 +1,5 @@
+{{- /* JSON Resume (https://jsonresume.org/schema) generated from data/cv.yaml. */ -}}
+{{- $cv := hugo.Data.cv -}}
+{{- $out := merge (dict "$schema" "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json") $cv -}}
+{{- $out = merge $out (dict "meta" (dict "canonical" ("resume.json" | absURL) "lastModified" (now.UTC.Format "2006-01-02T15:04:05Z"))) -}}
+{{- $out | jsonify (dict "indent" "  ") -}}

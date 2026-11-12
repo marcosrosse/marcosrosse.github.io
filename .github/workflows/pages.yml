@@ -25,8 +25,6 @@ jobs:
           curl -fsSLo hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
           sudo dpkg -i hugo.deb
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Check resume.json has no phone number
-        run: test -z "$(jq -r '.basics.phone // ""' data/resume.json)" || { echo "::error::data/resume.json contains basics.phone; remove it before publishing"; exit 1; }
       - id: pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0

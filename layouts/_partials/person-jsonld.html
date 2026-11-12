@@ -1,0 +1,23 @@
+{{- /* schema.org Person for search engines and AI crawlers, built from data/cv.yaml. */ -}}
+{{- $cv := hugo.Data.cv -}}
+{{- $b := $cv.basics -}}
+{{- $skills := slice -}}
+{{- range $cv.skills }}{{ $skills = $skills | append .keywords }}{{ end -}}
+{{- $person := dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "name" $b.name
+  "jobTitle" $b.label
+  "description" $b.summary
+  "email" (printf "mailto:%s" $b.email)
+  "url" site.BaseURL
+  "address" (dict "@type" "PostalAddress" "addressLocality" $b.location.city "addressCountry" $b.location.countryCode)
+  "sameAs" (apply $b.profiles "index" "." "url")
+  "knowsAbout" $skills
+  "knowsLanguage" (apply $cv.languages "index" "." "language")
+  "alumniOf" (apply $cv.education "index" "." "institution")
+-}}
+{{- range first 1 (where $cv.work "endDate" "eq" nil) }}
+  {{- $person = merge $person (dict "worksFor" (dict "@type" "Organization" "name" .name)) -}}
+{{- end -}}
+<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>

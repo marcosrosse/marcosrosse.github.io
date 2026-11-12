@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json
+# CV source of truth. Schema: JSON Resume (https://jsonresume.org/schema), written as YAML.
+# Rendered as the home page, /Marcos-Rosse-CV.pdf, /resume.json, /cv.md and /llms.txt.
+# Dates are YYYY-MM; leave endDate out for a current job.
+
+basics:
+  name: Marcos Rosse
+  label: Site Reliability and Platform Engineer
+  email: interviews@mrosse.com
+  url: https://mrosse.com/
+  summary: >-
+    Site Reliability Engineer in Lisbon with six years in DevOps and SRE and six before that as a
+    Linux sysadmin. At Sky I keep streaming applications reliable for services across Europe and
+    the US, including Peacock, SkyShowtime and NOW TV. Before that I built CI/CD and moved banks
+    and telecom operators onto OpenShift. My focus is platform engineering: infrastructure as code,
+    CI/CD, observability and edge delivery, and making releases and traffic peaks routine.
+  location:
+    city: Lisbon
+    countryCode: PT
+    region: Lisbon
+  profiles:
+    - network: LinkedIn
+      username: marcosrosse
+      url: https://www.linkedin.com/in/marcosrosse/
+    - network: GitHub
+      username: marcosrosse
+      url: https://github.com/marcosrosse
+
+work:
+  - name: Sky
+    position: Site Reliability Engineer
+    location: Lisbon, Portugal
+    startDate: "2023-10"
+    summary: >-
+      Comcast NBCUniversal's Global Streaming Technology group, behind Sky UK, Sky Deutschland,
+      Sky Italia, Peacock (US), SkyShowtime and NOW TV. My team sits in the middle: we run on the
+      shared EKS clusters and Akamai CDN owned by other platform teams, and the application teams
+      we support run on what we provide.
+    highlights:
+      - Assessed how a load balancer change by the EKS platform team would affect our edge configuration, and updated origin settings (SNI) across more than 30 Akamai properties ahead of the cutover.
+      - Wrote a Python Prometheus exporter for GitHub service health (Git operations, Actions, pull requests, issues), with dashboards and alerts, after GitHub outages kept disrupting the team's work.
+      - "Automated credentials for new RDS and DocumentDB instances: admin and user passwords are generated and stored in HashiCorp Vault, and Terragrunt reads them at creation time, so nobody handles a secret by hand."
+      - Support the applications through releases, incidents and live sports peaks such as NFL games, and share the on-call rotation.
+      - Own their observability and alerting with Prometheus, Thanos, Grafana and Alertmanager, including SLOs, certificate expiry checks, and alert routing to Slack and incident tooling.
+      - "Manage the Akamai configuration they use: delivery properties, Global Traffic Management (GTM), Cloudlets, WAF security policies and TLS certificates."
+      - Deploy and run the AWS resources they need as code with Terraform and Terragrunt, maintain the GitHub Actions and Jenkins pipelines onto the shared EKS clusters, scale non-production down outside traffic windows to cut cost, and patch vulnerabilities on hosts and in code.
+
+  - name: Velv
+    position: DevOps Engineer
+    location: Lisbon, Portugal
+    startDate: "2022-08"
+    endDate: "2023-10"
+    summary: Consultancy for telecom operators.
+    highlights:
+      - Led the migration of monolithic applications from legacy infrastructure to OpenShift for a telecom operator in the Middle East.
+      - Helped design its disaster recovery environment.
+      - Unblocked a stalled Kubernetes upgrade for a European telecom operator.
+
+  - name: Avanade
+    position: DevOps Engineer
+    location: São Paulo, Brazil
+    startDate: "2021-03"
+    endDate: "2022-08"
+    summary: Consultancy for a Swiss private bank.
+    highlights:
+      - Moved the bank's workloads from Azure to an on-premises OpenShift platform.
+      - Standardised CI/CD for more than 50 microservices.
+      - Built environments as code with Terraform, Helm and Kustomize, and ran the platform's secrets, messaging and data services.
+      - Mentored development teams on DevOps practices; promoted for the results.
+
+  - name: NTT DATA (Everis)
+    position: DevOps Engineer
+    location: São Paulo, Brazil
+    startDate: "2019-08"
+    endDate: "2021-02"
+    summary: Consultancy for one of Brazil's largest banks.
+    highlights:
+      - Automated developer onboarding, from repositories and pipelines to dashboards, monitoring and infrastructure.
+      - Built CI/CD pipelines for digital banking services.
+      - Provisioned and maintained API gateways.
+      - Automated OpenStack provisioning with Terraform for an internal platform as a service.
+
+  - name: Brazilian Air Force (São Paulo Support Group)
+    position: IT Analyst and Systems Administrator
+    location: São Paulo, Brazil
+    startDate: "2013-08"
+    endDate: "2019-07"
+    summary: Enlisted IT role during military service.
+    highlights:
+      - Ran Linux servers on XenServer and managed more than 100 Ubuntu desktops with Ansible.
+      - Set up central logging and monitoring for the unit's network.
+      - Ran the firewall, web proxy, backups and directory services (LDAP and Samba).
+
+education:
+  - institution: Universidade Nove de Julho (UNINOVE)
+    studyType: Bachelor's degree
+    area: Computer Science
+    location: São Paulo, Brazil
+    startDate: "2015-01"
+    endDate: "2018-12"
+
+certificates:
+  - name: Certified Kubernetes Administrator (CKA)
+    issuer: The Linux Foundation
+    date: "2023"
+    note: expired
+    url: https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/a05ae92a-8874-457e-8ab4-19802c1cde96-marcos-rosse-moreira-0ca203dc-c4e8-4e9a-9e0b-9b5f155acf67-certificate.pdf
+  - name: Microsoft Azure Fundamentals (AZ-900)
+    issuer: Microsoft
+    date: "2022"
+    url: https://www.credly.com/badges/73634373-5730-4f8c-8e50-7928382ba220
+
+# One grouped list for the whole career instead of a tool list per employer.
+skills:
+  - name: Containers and Kubernetes
+    keywords: [Kubernetes, Amazon EKS, OpenShift, k3s, Helm, Kustomize, Docker]
+  - name: Cloud and edge
+    keywords: [AWS, Azure, "Akamai (Property Manager, GTM, Cloudlets, WAF, certificates)", OpenStack, Hetzner]
+  - name: Infrastructure as code
+    keywords: [Terraform, OpenTofu, Terragrunt, Ansible]
+  - name: CI/CD and GitOps
+    keywords: [GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Flux CD]
+  - name: Observability
+    keywords: [Prometheus, Thanos, Alertmanager, Grafana, Datadog, Elasticsearch, SLIs and SLOs]
+  - name: Security
+    keywords: [HashiCorp Vault, SOPS, vulnerability remediation]
+  - name: Languages
+    keywords: [Go, Python, Bash]
+  - name: Linux and virtualisation
+    keywords: [Ubuntu, RHEL, Incus, XenServer]
+  # Provisioned and observed as a platform engineer; not looking for DBA work.
+  - name: Managed data services
+    keywords: [Amazon Aurora, MongoDB Atlas, Elastic Cloud, Couchbase, Kafka]
+
+languages:
+  - language: Portuguese
+    fluency: Native
+  - language: English
+    fluency: Professional working proficiency

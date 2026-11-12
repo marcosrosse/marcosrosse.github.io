@@ -1,0 +1,26 @@
+{{- $cv := hugo.Data.cv -}}
+{{- $b := $cv.basics -}}
+# {{ $b.name }}
+
+> {{ $b.label }} based in {{ $b.location.city }}, Portugal.
+
+{{ $b.summary }}
+
+## CV
+
+- [CV in Markdown]({{ "cv.md" | absURL }}): the full CV as plain text
+- [CV in JSON Resume format]({{ "resume.json" | absURL }}): structured data, schema at https://jsonresume.org/schema
+{{- with site.Params.cvPDF }}
+- [CV as PDF]({{ . | absURL }}): printable version
+{{- end }}
+
+## Projects
+{{ with site.GetPage "/projects" }}{{ range .Pages.ByWeight }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Params.summary }}{{ end }}{{ end }}
+
+## Contact
+
+- Email: {{ $b.email }}
+{{- range $b.profiles }}
+- {{ .network }}: {{ .url }}
+{{- end }}
