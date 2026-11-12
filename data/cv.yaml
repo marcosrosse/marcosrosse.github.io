@@ -31,14 +31,16 @@ work:
     position: Site Reliability Engineer
     location: Lisbon, Portugal
     startDate: "2023-10"
-    summary: Reliability and platform work for the video streaming services of Sky UK, Sky Deutschland and Sky Italia, plus Peacock (US), SkyShowtime and NOW TV.
+    summary: >-
+      Global Streaming Technology, Comcast NBCUniversal. The team runs the streaming platform behind
+      Sky UK, Sky Deutschland, Sky Italia, Peacock (US), SkyShowtime and NOW TV.
     highlights:
-      - Prepare and scale Kubernetes (Amazon EKS) environments for high-traffic live sports events.
-      - Build and maintain CI/CD pipelines for services running on EKS.
-      - Manage CDN traffic routing and delivery configuration for global audiences.
-      - Run the metrics stack and build dashboards and alerts wired into incident response; part of the on-call rotation.
-      - Provision AWS infrastructure as code, and scale environments down during low-traffic periods to cut cost.
-      - Remediate vulnerabilities across Linux hosts and internal code.
+      - Run the observability platform (Prometheus, Thanos, Grafana, Alertmanager) and define and track SLIs and SLOs for platform services.
+      - Prepare and scale Kubernetes (Amazon EKS) environments for live sports and other high-traffic events watched by millions of viewers.
+      - Provision AWS and GCP infrastructure as code with Terraform and Terragrunt, and scale environments down in low-traffic periods to cut cost.
+      - Build and maintain CI/CD and configuration management with GitHub Actions, Jenkins and Ansible.
+      - Tune global CDN delivery and traffic routing so playback stays fast and available at peak.
+      - Operate the platform's data stores (Couchbase, Amazon Aurora, MongoDB, Elasticsearch), remediate vulnerabilities, and take part in the on-call rotation.
 
   - name: Velv
     position: DevOps Engineer
@@ -110,15 +112,15 @@ skills:
   - name: Containers and Kubernetes
     keywords: [Kubernetes, Amazon EKS, OpenShift, k3s, Helm, Kustomize, Docker]
   - name: Cloud and edge
-    keywords: [AWS, Azure, Akamai, OpenStack, Hetzner]
+    keywords: [AWS, GCP, Azure, Akamai, OpenStack, Hetzner]
   - name: Infrastructure as code
     keywords: [Terraform, OpenTofu, Terragrunt, Ansible]
   - name: CI/CD and GitOps
     keywords: [GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Flux CD]
   - name: Observability
-    keywords: [Prometheus, Thanos, Alertmanager, Grafana, Datadog, Elasticsearch]
+    keywords: [Prometheus, Thanos, Alertmanager, Grafana, Datadog, Elasticsearch, SLIs and SLOs]
   - name: Data and messaging
-    keywords: [PostgreSQL, MongoDB, Couchbase, Redis, Kafka]
+    keywords: [PostgreSQL, Amazon Aurora, MongoDB, Couchbase, Redis, Kafka]
   - name: Security
     keywords: [HashiCorp Vault, SOPS, vulnerability remediation]
   - name: Languages
