@@ -1,0 +1,6 @@
+{{- /* Renders a JSON Resume date range: dict "start" "2023-10" "end" "" → "Oct 2023 – Present". */ -}}
+{{- $fmt := "Jan 2006" -}}
+{{- $start := cond (strings.Contains .start "-") (time.AsTime (printf "%s-01" .start) | time.Format $fmt) .start -}}
+{{- $end := "Present" -}}
+{{- with .end }}{{ $end = cond (strings.Contains . "-") (time.AsTime (printf "%s-01" .) | time.Format $fmt) . }}{{ end -}}
+{{- return (printf "%s – %s" $start $end) -}}

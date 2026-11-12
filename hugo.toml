@@ -5,7 +5,7 @@ enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
 
 [params]
-  # Display name everywhere, including the CV (overrides basics.name in data/resume.json).
+  # Name shown in the title/footer; the CV itself reads data/cv.yaml.
   author = "Marcos Rosse"
   role = "Site Reliability Engineer"
   location = "Lisbon, Portugal"
@@ -35,6 +35,24 @@ disableKinds = ["taxonomy", "term"]
   noClasses = false
   style = "github"
 
+[outputFormats]
+  # Machine-readable copies of the CV for ATS, crawlers and AI agents (see layouts/home.*).
+  [outputFormats.resumejson]
+    mediaType = "application/json"
+    baseName = "resume"
+    isPlainText = true
+    rel = "alternate"
+  [outputFormats.cvmd]
+    mediaType = "text/markdown"
+    baseName = "cv"
+    isPlainText = true
+    rel = "alternate"
+  [outputFormats.llms]
+    mediaType = "text/plain"
+    baseName = "llms"
+    isPlainText = true
+    rel = "alternate"
+
 [outputs]
-  home = ["html", "rss"]
+  home = ["html", "resumejson", "cvmd", "llms"]
   section = ["html", "rss"]

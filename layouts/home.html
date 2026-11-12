@@ -1,19 +1,17 @@
 {{ define "main" }}
-{{- /* The CV is data/resume.json, a Reactive Resume export. Hidden sections/items
-       (visible: false) and the phone number are never rendered. */ -}}
-{{ $r := hugo.Data.resume }}
-{{ $b := $r.basics }}
-{{ $s := $r.sections }}
-{{ $levels := dict "5" "Native" "4" "Fluent" "3" "Professional" "2" "Intermediate" "1" "Basic" }}
+{{- /* The CV lives in data/cv.yaml (JSON Resume schema). The same data feeds
+       /resume.json, /cv.md, /llms.txt, the JSON-LD in <head> and the PDF. */ -}}
+{{ $cv := hugo.Data.cv }}
+{{ $b := $cv.basics }}
 
 <section class="wrap cv-head">
-  <p class="eyebrow">{{ $b.location }}</p>
-  <h1>{{ site.Params.author }}</h1>
-  <p class="headline">{{ $b.headline }}</p>
+  <p class="eyebrow">{{ $b.location.city }}, Portugal</p>
+  <h1>{{ $b.name }}</h1>
+  <p class="headline">{{ $b.label }}</p>
   <div class="actions">
     <a class="btn btn-primary" href="mailto:{{ $b.email }}">{{ $b.email }}</a>
-    {{ range where $s.profiles.items "visible" true }}
-      <a class="btn" href="{{ .url.href }}" target="_blank" rel="me noopener">{{ .network }}<span class="sr-only"> (opens in a new tab)</span></a>
+    {{ range $b.profiles }}
+      <a class="btn" href="{{ .url }}" target="_blank" rel="me noopener">{{ .network }}<span class="sr-only"> (opens in a new tab)</span></a>
     {{ end }}
     <a class="btn" href="{{ "/projects/" | relURL }}">Projects</a>
     {{ with site.Params.cvPDF }}<a class="btn" href="{{ . | relURL }}" download>Download PDF</a>{{ end }}
@@ -21,108 +19,85 @@
   {{- /* Print/PDF only: the buttons above are hidden there, so spell the links out. */}}
   <p class="print-only cv-contact">
     {{ $b.email }}
-    {{ range where $s.profiles.items "visible" true }} · <a href="{{ .url.href }}">{{ replaceRE `^https?://(www\.)?` "" .url.href | strings.TrimSuffix "/" }}</a>{{ end }}
+    {{ range $b.profiles }} · <a href="{{ .url }}">{{ replaceRE `^https?://(www\.)?` "" .url | strings.TrimSuffix "/" }}</a>{{ end }}
     · <a href="{{ site.BaseURL }}">{{ replaceRE `^https?://` "" site.BaseURL | strings.TrimSuffix "/" }}</a>
   </p>
 </section>
 
 <div class="wrap cv-grid">
   <div class="cv-main">
-    {{ with $s.summary }}{{ if and .visible .content }}
-      <section aria-labelledby="cv-summary">
-        <h2 id="cv-summary">{{ .name }}</h2>
-        <div class="prose">{{ .content | safeHTML }}</div>
-      </section>
-    {{ end }}{{ end }}
+    <section aria-labelledby="cv-summary">
+      <h2 id="cv-summary">Summary</h2>
+      <p class="cv-summary">{{ $b.summary }}</p>
+    </section>
 
-    {{ with $s.experience }}{{ $items := where .items "visible" true }}{{ if and .visible $items }}
-      <section aria-labelledby="cv-experience">
-        <h2 id="cv-experience">{{ .name }}</h2>
-        {{ range $items }}
-          <article class="cv-entry">
-            <header>
-              <h3>{{ .position }}</h3>
-              <p class="cv-org">{{ with .url.href }}<a href="{{ . }}" rel="noopener">{{ end }}{{ .company }}{{ with .url.href }}</a>{{ end }} · {{ .location }}</p>
-              <p class="cv-date">{{ .date }}</p>
-            </header>
-            <div class="prose">{{ .summary | safeHTML }}</div>
-          </article>
-        {{ end }}
-      </section>
-    {{ end }}{{ end }}
+    <section aria-labelledby="cv-experience">
+      <h2 id="cv-experience">Experience</h2>
+      {{ range $cv.work }}
+        <article class="cv-entry">
+          <header>
+            <h3>{{ .position }}</h3>
+            <p class="cv-org">{{ .name }} · {{ .location }}</p>
+            <p class="cv-date">{{ partial "cv-dates.html" (dict "start" .startDate "end" .endDate) }}</p>
+          </header>
+          {{ with .summary }}<p class="cv-context">{{ . }}</p>{{ end }}
+          {{ with .highlights }}<ul class="cv-highlights">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+        </article>
+      {{ end }}
+    </section>
 
-    {{ with $s.education }}{{ $items := where .items "visible" true }}{{ if and .visible $items }}
-      <section aria-labelledby="cv-education">
-        <h2 id="cv-education">{{ .name }}</h2>
-        {{ range $items }}
-          <article class="cv-entry">
-            <header>
-              <h3>{{ .studyType }}</h3>
-              <p class="cv-org">{{ .institution }}{{ with .area }} · {{ . }}{{ end }}</p>
-              <p class="cv-date">{{ .date }}</p>
-            </header>
-            {{ with .summary }}<div class="prose">{{ . | safeHTML }}</div>{{ end }}
-          </article>
-        {{ end }}
-      </section>
-    {{ end }}{{ end }}
+    <section aria-labelledby="cv-education">
+      <h2 id="cv-education">Education</h2>
+      {{ range $cv.education }}
+        <article class="cv-entry">
+          <header>
+            <h3>{{ .studyType }} in {{ .area }}</h3>
+            <p class="cv-org">{{ .institution }} · {{ .location }}</p>
+            <p class="cv-date">{{ partial "cv-dates.html" (dict "start" .startDate "end" .endDate) }}</p>
+          </header>
+        </article>
+      {{ end }}
+    </section>
   </div>
 
   <aside class="cv-side">
-    <section aria-labelledby="cv-projects" class="cv-projects">
-      <h2 id="cv-projects">Projects</h2>
-      <p class="note">Built and run in my own time. Most code lives on my private, self-hosted Forgejo.</p>
-      <ul>
-        {{ with site.GetPage "/projects" }}{{ range .Pages.ByWeight }}
-          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="status status-{{ .Params.status | urlize }}">{{ .Params.status }}</span></li>
-        {{ end }}{{ end }}
-      </ul>
-      <p class="no-print"><a class="more" href="{{ "/projects/" | relURL }}">Setup and details →</a></p>
+    <section aria-labelledby="cv-skills">
+      <h2 id="cv-skills">Skills</h2>
+      {{ range $cv.skills }}
+        <h3>{{ .name }}</h3>
+        <ul class="stack">{{ range .keywords }}<li>{{ . }}</li>{{ end }}</ul>
+      {{ end }}
     </section>
 
-    {{ with $s.skills }}{{ $items := where .items "visible" true }}{{ if and .visible $items }}
-      <section aria-labelledby="cv-skills">
-        <h2 id="cv-skills">{{ .name }}</h2>
-        {{ range $items }}
-          <h3>{{ .name }}</h3>
-          <ul class="stack">{{ range .keywords }}<li>{{ . }}</li>{{ end }}</ul>
+    <section aria-labelledby="cv-certs">
+      <h2 id="cv-certs">Certifications</h2>
+      <ul class="cv-list">
+        {{ range $cv.certificates }}
+          <li>
+            <strong>{{ .name }}</strong>
+            <span>{{ .issuer }} · {{ .date }}{{ with .note }} ({{ . }}){{ end }}</span>
+            {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener">Show credential<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}
+          </li>
         {{ end }}
-      </section>
-    {{ end }}{{ end }}
+      </ul>
+    </section>
 
-    {{ with $s.certifications }}{{ $items := where .items "visible" true }}{{ if and .visible $items }}
-      <section aria-labelledby="cv-certs">
-        <h2 id="cv-certs">{{ .name }}</h2>
-        <ul class="cv-list">
-          {{ range $items }}
-            <li>
-              <strong>{{ .name }}</strong>
-              <span>{{ trim .issuer " " }} · {{ .date }}</span>
-              {{ $label := or .url.label "Show credential" }}
-              {{ with .url.href }}<a href="{{ . }}" rel="noopener">{{ $label }}</a>{{ end }}
-            </li>
-          {{ end }}
-        </ul>
-      </section>
-    {{ end }}{{ end }}
+    <section aria-labelledby="cv-languages">
+      <h2 id="cv-languages">Languages</h2>
+      <ul class="cv-list">
+        {{ range $cv.languages }}<li><strong>{{ .language }}</strong> <span>{{ .fluency }}</span></li>{{ end }}
+      </ul>
+    </section>
 
-    {{ with $s.languages }}{{ $items := where .items "visible" true }}{{ if and .visible $items }}
-      <section aria-labelledby="cv-languages">
-        <h2 id="cv-languages">{{ .name }}</h2>
-        <ul class="cv-list">
-          {{ range $items }}
-            <li><strong>{{ .name }}</strong> <span>{{ or .description (index $levels (string .level)) }}</span></li>
-          {{ end }}
-        </ul>
-      </section>
-    {{ end }}{{ end }}
-
-    {{ with $s.references }}{{ $items := where .items "visible" true }}{{ if and .visible $items }}
-      <section aria-labelledby="cv-references">
-        <h2 id="cv-references">{{ .name }}</h2>
-        {{ range $items }}<p>{{ .name }}</p>{{ end }}
-      </section>
-    {{ end }}{{ end }}
+    <section aria-labelledby="cv-projects" class="cv-projects">
+      <h2 id="cv-projects">Projects</h2>
+      <p class="note">Built and run in my own time.</p>
+      <ul>
+        {{ with site.GetPage "/projects" }}{{ range .Pages.ByWeight }}
+          <li><a href="{{ .Permalink }}">{{ .Title }}</a> <span class="status status-{{ .Params.status | urlize }}">{{ .Params.status }}</span></li>
+        {{ end }}{{ end }}
+      </ul>
+    </section>
   </aside>
 </div>
 

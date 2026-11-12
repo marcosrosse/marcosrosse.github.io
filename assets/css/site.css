@@ -206,6 +206,11 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
 .prose li > p { margin: 0; }
 .cv-main .prose ul { margin: 0 0 1rem; }
 
+.cv-summary { font-size: 1.05rem; max-width: 70ch; }
+.cv-context { color: var(--muted); margin: 0 0 .4rem; }
+.cv-highlights { margin: 0; padding-left: 1.2rem; }
+.cv-highlights li { margin-bottom: .3rem; }
+
 .print-only { display: none; }
 
 /* Print / PDF: one compact A4 document, no site chrome. */
@@ -231,14 +236,18 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
   .cv-org, .cv-date { font-size: 8.5pt; }
   .prose p, .cv-main .prose ul { margin: 0 0 3pt; }
   .prose li { margin-bottom: 0; }
-  .prose li, .cv-list li { break-inside: avoid; }
+  .prose li, .cv-list li, .cv-highlights li { break-inside: avoid; }
+  .cv-summary { font-size: 9.5pt; margin: 0; max-width: none; }
+  .cv-context { margin: 0 0 2pt; font-size: 9pt; }
+  .cv-highlights li { margin-bottom: 1pt; }
   .cv-side h3 { font-size: 8.5pt; margin: 5pt 0 2pt; }
   .stack { display: block; }
   .stack li { display: inline; padding: 0; border: 0; background: none; font-size: 8.5pt; }
   .stack li + li::before { content: ", "; }
   .cv-list li { padding: 3pt 0; }
   .cv-list span { font-size: 8pt; }
-  .cv-projects { border: 0; padding: 0; background: none; }
+  .cv-projects { border: 0; padding: 0; background: none; break-inside: avoid; }
+  .cv-grid h2 { break-after: avoid; }
   .cv-projects .note { font-size: 8pt; }
   .cv-projects li { padding: 2pt 0; }
 }

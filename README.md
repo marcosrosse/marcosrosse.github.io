@@ -45,7 +45,18 @@ Settings → Pages → Build and deployment → Source: **GitHub Actions**.
 
 ## CV
 
-The home page renders `data/resume.json`, an export from [Reactive Resume](https://rxresu.me). Re-export and replace the file to update it. Sections or items marked hidden in Reactive Resume are skipped, and the phone number is never rendered, **but the raw JSON is public in this repo**: remove anything private from it before committing (CI fails if `basics.phone` is set). The displayed name comes from `params.author` in `hugo.toml`, not from the JSON.
+`data/cv.yaml` is the only source of the CV. It follows the [JSON Resume](https://jsonresume.org/schema) schema (as YAML; editors with the YAML language server validate it). Edit it and push; everything below is generated from it:
+
+| URL | What | For |
+| --- | --- | --- |
+| `/` | CV page | people |
+| `/Marcos-Rosse-CV.pdf` | PDF, rendered in CI with headless Chrome and the print stylesheet | recruiters, ATS uploads |
+| `/resume.json` | JSON Resume | ATS and resume tools |
+| `/cv.md` | Markdown | AI agents, copy and paste |
+| `/llms.txt` | Short index of the above ([llms.txt](https://llmstxt.org)) | AI agents and crawlers |
+| JSON-LD in `<head>` | schema.org `Person` | search engines |
+
+Everything in `cv.yaml` is public, so keep phone numbers and anything private out of it.
 
 **PDF:** CI renders the CV page to `/Marcos-Rosse-CV.pdf` (the "Download PDF" button) with headless Chrome and the site's print stylesheet. Locally the button 404s under `hugo server`; to preview the PDF:
 
