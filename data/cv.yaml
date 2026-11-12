@@ -39,10 +39,10 @@ work:
     highlights:
       - Support a set of applications the streaming platforms depend on, through releases, incidents and capacity planning for live sports peaks such as NFL games.
       - Deploy and run their database clusters on AWS (RDS and Aurora), MongoDB Atlas, Elastic Cloud and Couchbase.
-      - Own observability and alerting for these applications and their data with Prometheus, Thanos, Grafana and Alertmanager, including certificate expiry checks and alert routing to Slack and incident tooling.
+      - Own observability and alerting for these applications and their data with Prometheus, Thanos, Grafana and Alertmanager, including SLOs for the services we support, certificate expiry checks, and alert routing to Slack and incident tooling.
       - Manage the Akamai configuration our applications use, including delivery properties, Global Traffic Management (GTM), Cloudlets, WAF security policies and TLS certificates.
       - Provision AWS resources as code with Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
-      - Maintain the CI/CD pipelines that deploy our services onto the shared EKS clusters.
+      - Maintain the GitHub Actions and Jenkins pipelines that deploy our services onto the shared EKS clusters.
       - Patch vulnerabilities on Linux hosts and in internal code, and share the on-call rotation.
 
   - name: Velv
@@ -121,7 +121,7 @@ skills:
   - name: CI/CD and GitOps
     keywords: [GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Flux CD]
   - name: Observability
-    keywords: [Prometheus, Thanos, Alertmanager, Grafana, Datadog, Elasticsearch]
+    keywords: [Prometheus, Thanos, Alertmanager, Grafana, Datadog, Elasticsearch, SLIs and SLOs]
   - name: Databases and messaging
     keywords: [Amazon RDS and Aurora, MongoDB Atlas, Elastic Cloud, Couchbase, PostgreSQL, Redis, Kafka]
   - name: Security
