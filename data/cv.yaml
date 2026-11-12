@@ -32,15 +32,16 @@ work:
     location: Lisbon, Portugal
     startDate: "2023-10"
     summary: >-
-      Global Streaming Technology, Comcast NBCUniversal. The team runs the streaming platform behind
-      Sky UK, Sky Deutschland, Sky Italia, Peacock (US), SkyShowtime and NOW TV.
+      Working in Comcast NBCUniversal's Global Streaming Technology group on the shared video platform
+      used by Sky UK, Sky Deutschland, Sky Italia, Peacock (US), SkyShowtime and NOW TV.
     highlights:
-      - Run the observability platform (Prometheus, Thanos, Grafana, Alertmanager) and define and track SLIs and SLOs for platform services.
-      - Prepare and scale Kubernetes (Amazon EKS) environments for live sports and other high-traffic events watched by millions of viewers.
-      - Provision AWS and GCP infrastructure as code with Terraform and Terragrunt, and scale environments down in low-traffic periods to cut cost.
-      - Build and maintain CI/CD and configuration management with GitHub Actions, Jenkins and Ansible.
-      - Tune global CDN delivery and traffic routing so playback stays fast and available at peak.
-      - Operate the platform's data stores (Couchbase, Amazon Aurora, MongoDB, Elasticsearch), remediate vulnerabilities, and take part in the on-call rotation.
+      - Get the platform ready for live sports peaks such as NFL games by pre-scaling Amazon EKS clusters and the services that run on them.
+      - Steer global traffic and edge delivery on Akamai (Global Traffic Management and delivery properties).
+      - Look after the metrics and alerting stack (Prometheus with Thanos for long-term storage, Grafana, Alertmanager), including certificate expiry checks, alert routing to Slack and incident tooling, and SLOs for the services we own.
+      - Write AWS and GCP infrastructure in Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
+      - Keep releases moving with GitHub Actions, Jenkins and Ansible pipelines for services on EKS.
+      - Set up Elasticsearch clusters on Elastic Cloud and support Couchbase, Aurora and MongoDB for the platform teams.
+      - Patch vulnerabilities on Linux hosts and in internal code, and share the on-call rotation.
 
   - name: Velv
     position: DevOps Engineer
