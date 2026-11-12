@@ -40,7 +40,7 @@ work:
       - Support a set of applications the streaming platforms depend on, through releases, incidents and capacity planning for live sports peaks such as NFL games.
       - Own observability and alerting for these applications with Prometheus, Thanos, Grafana and Alertmanager, including SLOs for the services we support, certificate expiry checks, and alert routing to Slack and incident tooling.
       - Manage the Akamai configuration our applications use, including delivery properties, Global Traffic Management (GTM), Cloudlets, WAF security policies and TLS certificates.
-      - Provision AWS resources and managed data services (Aurora, MongoDB Atlas, Elastic Cloud, Couchbase) as code with Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
+      - Deploy and run the AWS resources our applications need as code with Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
       - Maintain the GitHub Actions and Jenkins pipelines that deploy our services onto the shared EKS clusters.
       - Patch vulnerabilities on Linux hosts and in internal code, and share the on-call rotation.
 
