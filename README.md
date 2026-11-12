@@ -1,4 +1,4 @@
-# marcosrosse.github.io
+# mrosse.com
 
 Portfolio and blog, built with [Hugo](https://gohugo.io) (no theme, layouts in `layouts/`) and deployed to GitHub Pages by `.github/workflows/pages.yml` on every push to `main`. Pull requests only build.
 
@@ -42,6 +42,16 @@ hugo new content posts/my-post.md   # starts as draft; set draft: false to publi
 ## One-time GitHub setup
 
 Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+
+**Custom domain (mrosse.com):** set in Settings → Pages → Custom domain (or `gh api -X PUT repos/marcosrosse/marcosrosse.github.io/pages -f cname=mrosse.com`), not with a `CNAME` file: Actions-based Pages ignores that file. `configure-pages` then passes the domain to Hugo as `--baseURL`. Cloudflare DNS, all **DNS only** (grey cloud) so GitHub can issue the certificate:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | `@` | 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 |
+| AAAA | `@` | 2606:50c0:8000::153, 2606:50c0:8001::153, 2606:50c0:8002::153, 2606:50c0:8003::153 |
+| CNAME | `www` | `marcosrosse.github.io` |
+
+Verify the domain under the account's Settings → Pages → Verified domains (TXT `_github-pages-challenge-marcosrosse`) so nobody else can claim it. MX and other `*.mrosse.com` records are unaffected.
 
 ## CV
 

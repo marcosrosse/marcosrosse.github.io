@@ -7,7 +7,7 @@ basics:
   name: Marcos Rosse
   label: Site Reliability and Platform Engineer
   email: interviews@mrosse.com
-  url: https://marcosrosse.github.io/
+  url: https://mrosse.com/
   summary: >-
     Site Reliability Engineer in Lisbon with six years in DevOps and SRE and six before that as a
     Linux sysadmin. At Sky I keep streaming applications reliable for services across Europe and
@@ -37,7 +37,7 @@ work:
       shared EKS clusters and Akamai CDN owned by other platform teams, and the application teams
       we support run on what we provide.
     highlights:
-      - When the EKS platform team planned a load balancer change, checked our older Akamai properties and found more than 30 that predated the current setup and did not send SNI to the origin, which would have broken those services once the change went live; fixed all of them before the rollout.
+      - Assessed how a load balancer change by the EKS platform team would affect our edge configuration, and updated origin settings (SNI) across more than 30 Akamai properties ahead of the cutover.
       - Wrote a Python Prometheus exporter for GitHub service health (Git operations, Actions, pull requests, issues), with dashboards and alerts, after GitHub outages kept disrupting the team's work.
       - "Automated credentials for new RDS and DocumentDB instances: admin and user passwords are generated and stored in HashiCorp Vault, and Terragrunt reads them at creation time, so nobody handles a secret by hand."
       - Support the applications through releases, incidents and live sports peaks such as NFL games, and share the on-call rotation.
