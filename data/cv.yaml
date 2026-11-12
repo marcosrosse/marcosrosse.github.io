@@ -40,7 +40,7 @@ work:
       - Support a set of applications the streaming platforms depend on, through releases, incidents and capacity planning for live sports peaks such as NFL games.
       - Deploy and run their database clusters on AWS (RDS and Aurora), MongoDB Atlas, Elastic Cloud and Couchbase.
       - Own observability and alerting for these applications and their data with Prometheus, Thanos, Grafana and Alertmanager, including certificate expiry checks and alert routing to Slack and incident tooling.
-      - Manage the Akamai delivery properties and Global Traffic Management (GTM) configuration our applications use.
+      - Manage the Akamai configuration our applications use, including delivery properties, Global Traffic Management (GTM), Cloudlets, WAF security policies and TLS certificates.
       - Provision AWS resources as code with Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
       - Maintain the CI/CD pipelines that deploy our services onto the shared EKS clusters.
       - Patch vulnerabilities on Linux hosts and in internal code, and share the on-call rotation.
@@ -115,7 +115,7 @@ skills:
   - name: Containers and Kubernetes
     keywords: [Kubernetes, Amazon EKS, OpenShift, k3s, Helm, Kustomize, Docker]
   - name: Cloud and edge
-    keywords: [AWS, Azure, "Akamai (Property Manager, GTM)", OpenStack, Hetzner]
+    keywords: [AWS, Azure, "Akamai (Property Manager, GTM, Cloudlets, WAF, certificates)", OpenStack, Hetzner]
   - name: Infrastructure as code
     keywords: [Terraform, OpenTofu, Terragrunt, Ansible]
   - name: CI/CD and GitOps
