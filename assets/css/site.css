@@ -248,6 +248,7 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
   .cv-list span { font-size: 8pt; }
   .cv-projects { border: 0; padding: 0; background: none; break-inside: avoid; }
   .cv-grid h2 { break-after: avoid; }
+  .cv-side section { break-inside: avoid; }
   .cv-projects .note { font-size: 8pt; }
   .cv-projects li { padding: 2pt 0; }
 }

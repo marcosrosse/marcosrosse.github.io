@@ -10,10 +10,10 @@ basics:
   url: https://marcosrosse.github.io/
   summary: >-
     Site Reliability Engineer in Lisbon with six years in DevOps and SRE and six before that as a
-    Linux sysadmin. I run Kubernetes platforms on AWS for streaming services across Europe and the
-    US, including Sky, Peacock and SkyShowtime. Before
-    that I built CI/CD and moved banks and telecom operators onto OpenShift. Most of my work is
-    infrastructure as code, observability, and making releases and traffic peaks routine.
+    Linux sysadmin. At Sky I keep a set of streaming applications and their databases reliable for
+    services across Europe and the US, including Peacock, SkyShowtime and NOW TV. Before that I built
+    CI/CD and moved banks and telecom operators onto OpenShift. Most of my work is infrastructure as
+    code, databases, observability, and making releases and traffic peaks routine.
   location:
     city: Lisbon
     countryCode: PT
@@ -32,15 +32,17 @@ work:
     location: Lisbon, Portugal
     startDate: "2023-10"
     summary: >-
-      Working in Comcast NBCUniversal's Global Streaming Technology group on the shared video platform
-      used by Sky UK, Sky Deutschland, Sky Italia, Peacock (US), SkyShowtime and NOW TV.
+      Comcast NBCUniversal's Global Streaming Technology group, behind Sky UK, Sky Deutschland,
+      Sky Italia, Peacock (US), SkyShowtime and NOW TV. My team sits in the middle: we run on the
+      shared EKS clusters and Akamai CDN owned by other platform teams, and the application teams
+      we support run on what we provide.
     highlights:
-      - Get the platform ready for live sports peaks such as NFL games by pre-scaling Amazon EKS clusters and the services that run on them.
-      - Steer global traffic and edge delivery on Akamai (Global Traffic Management and delivery properties).
-      - Look after the metrics and alerting stack (Prometheus with Thanos for long-term storage, Grafana, Alertmanager), including certificate expiry checks, alert routing to Slack and incident tooling, and SLOs for the services we own.
-      - Write AWS and GCP infrastructure in Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
-      - Keep releases moving with GitHub Actions, Jenkins and Ansible pipelines for services on EKS.
-      - Set up Elasticsearch clusters on Elastic Cloud and support Couchbase, Aurora and MongoDB for the platform teams.
+      - Support a set of applications the streaming platforms depend on, through releases, incidents and capacity planning for live sports peaks such as NFL games.
+      - Deploy and run their database clusters on AWS (RDS and Aurora), MongoDB Atlas, Elastic Cloud and Couchbase.
+      - Own observability and alerting for these applications and their data with Prometheus, Thanos, Grafana and Alertmanager, including certificate expiry checks and alert routing to Slack and incident tooling.
+      - Manage the Akamai delivery properties and Global Traffic Management (GTM) configuration our applications use.
+      - Provision AWS resources as code with Terraform and Terragrunt, and cut non-production spend by scaling environments down outside traffic windows.
+      - Maintain the CI/CD pipelines that deploy our services onto the shared EKS clusters.
       - Patch vulnerabilities on Linux hosts and in internal code, and share the on-call rotation.
 
   - name: Velv
@@ -113,15 +115,15 @@ skills:
   - name: Containers and Kubernetes
     keywords: [Kubernetes, Amazon EKS, OpenShift, k3s, Helm, Kustomize, Docker]
   - name: Cloud and edge
-    keywords: [AWS, GCP, Azure, Akamai, OpenStack, Hetzner]
+    keywords: [AWS, Azure, "Akamai (Property Manager, GTM)", OpenStack, Hetzner]
   - name: Infrastructure as code
     keywords: [Terraform, OpenTofu, Terragrunt, Ansible]
   - name: CI/CD and GitOps
     keywords: [GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Flux CD]
   - name: Observability
-    keywords: [Prometheus, Thanos, Alertmanager, Grafana, Datadog, Elasticsearch, SLIs and SLOs]
-  - name: Data and messaging
-    keywords: [PostgreSQL, Amazon Aurora, MongoDB, Couchbase, Redis, Kafka]
+    keywords: [Prometheus, Thanos, Alertmanager, Grafana, Datadog, Elasticsearch]
+  - name: Databases and messaging
+    keywords: [Amazon RDS and Aurora, MongoDB Atlas, Elastic Cloud, Couchbase, PostgreSQL, Redis, Kafka]
   - name: Security
     keywords: [HashiCorp Vault, SOPS, vulnerability remediation]
   - name: Languages
