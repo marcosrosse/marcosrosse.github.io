@@ -31,7 +31,7 @@ work:
     position: Site Reliability Engineer
     location: Lisbon, Portugal
     startDate: "2023-10"
-    summary: Reliability and platform work for the video streaming services of Sky UK, Sky Deutschland and Sky Italia, plus Peacock (US), SkyShowtime and NOW.
+    summary: Reliability and platform work for the video streaming services of Sky UK, Sky Deutschland and Sky Italia, plus Peacock (US), SkyShowtime and NOW TV.
     highlights:
       - Prepare and scale Kubernetes (Amazon EKS) environments for high-traffic live sports events.
       - Build and maintain CI/CD pipelines for services running on EKS.
