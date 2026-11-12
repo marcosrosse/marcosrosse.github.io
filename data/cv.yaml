@@ -37,7 +37,7 @@ work:
       shared EKS clusters and Akamai CDN owned by other platform teams, and the application teams
       we support run on what we provide.
     highlights:
-      - Found a latent misconfiguration in more than 30 Akamai properties (SNI disabled on origin connections) that would have taken services down once the EKS team changed its load balancers, and fixed it across all of them ahead of the change.
+      - When the EKS platform team planned a load balancer change, checked our older Akamai properties and found more than 30 that predated the current setup and did not send SNI to the origin, which would have broken those services once the change went live; fixed all of them before the rollout.
       - Wrote a Python Prometheus exporter for GitHub service health (Git operations, Actions, pull requests, issues), with dashboards and alerts, after GitHub outages kept disrupting the team's work.
       - "Automated credentials for new RDS and DocumentDB instances: admin and user passwords are generated and stored in HashiCorp Vault, and Terragrunt reads them at creation time, so nobody handles a secret by hand."
       - Support the applications through releases, incidents and live sports peaks such as NFL games, and share the on-call rotation.
