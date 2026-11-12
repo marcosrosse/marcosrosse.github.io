@@ -10,7 +10,8 @@ basics:
   url: https://marcosrosse.github.io/
   summary: >-
     Site Reliability Engineer in Lisbon with six years in DevOps and SRE and six before that as a
-    Linux sysadmin. I run Kubernetes platforms on AWS for large video streaming services. Before
+    Linux sysadmin. I run Kubernetes platforms on AWS for streaming services across Europe and the
+    US, including Sky, Peacock and SkyShowtime. Before
     that I built CI/CD and moved banks and telecom operators onto OpenShift. Most of my work is
     infrastructure as code, observability, and making releases and traffic peaks routine.
   location:
@@ -30,7 +31,7 @@ work:
     position: Site Reliability Engineer
     location: Lisbon, Portugal
     startDate: "2023-10"
-    summary: Reliability and platform work for Sky UK's video streaming services.
+    summary: Reliability and platform work for the video streaming services of Sky UK, Sky Deutschland and Sky Italia, plus Peacock (US), SkyShowtime and NOW.
     highlights:
       - Prepare and scale Kubernetes (Amazon EKS) environments for high-traffic live sports events.
       - Build and maintain CI/CD pipelines for services running on EKS.
