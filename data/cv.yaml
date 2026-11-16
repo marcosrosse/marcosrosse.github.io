@@ -39,6 +39,7 @@ work:
     highlights:
       - Assessed how a load balancer change by the EKS platform team would affect our edge configuration, and updated origin settings (SNI) across more than 30 Akamai properties ahead of the cutover.
       - Wrote a Python Prometheus exporter for GitHub service health (Git operations, Actions, pull requests, issues), with dashboards and alerts, after GitHub outages kept disrupting the team's work.
+      - "Built an AI agent skill that triages alerts posted to a Slack channel: it reads the alert for its Grafana dashboard and runbook links, confirms the alert is firing in Alertmanager, queries Prometheus and the pod logs in Datadog for context, checks the runbook for outdated steps, and suggests how to resolve it."
       - "Automated credentials for new RDS and DocumentDB instances: admin and user passwords are generated and stored in HashiCorp Vault, and Terragrunt reads them at creation time, so nobody handles a secret by hand."
       - Support the applications through releases, incidents and live sports peaks such as NFL games, and share the on-call rotation.
       - Own their observability and alerting with Prometheus, Thanos, Grafana and Alertmanager, including SLOs, certificate expiry checks, and alert routing to Slack and incident tooling.
