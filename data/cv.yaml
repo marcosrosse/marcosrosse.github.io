@@ -6,7 +6,7 @@
 basics:
   name: Marcos Rosse
   label: Site Reliability and Platform Engineer
-  email: interviews@mrosse.com
+  email: contact@mrosse.com
   url: https://mrosse.com/
   summary: >-
     Site Reliability Engineer in Lisbon with six years in DevOps and SRE and six before that as a
@@ -32,18 +32,15 @@ work:
     location: Lisbon, Portugal
     startDate: "2023-10"
     summary: >-
-      Comcast NBCUniversal's Global Streaming Technology group, behind Sky UK, Sky Deutschland,
-      Sky Italia, Peacock (US), SkyShowtime and NOW TV. My team sits in the middle: we run on the
-      shared EKS clusters and Akamai CDN owned by other platform teams, and the application teams
-      we support run on what we provide.
+      Comcast NBCUniversal's Global Streaming Technology group, behind Sky, Peacock, SkyShowtime and
+      NOW TV. My team builds on EKS and Akamai platforms owned by other teams, in support of the
+      application teams.
     highlights:
-      - Assessed how a load balancer change by the EKS platform team would affect our edge configuration, and updated origin settings (SNI) across more than 30 Akamai properties ahead of the cutover.
+      - Assessed how a load balancer change by the EKS platform team would affect our edge configuration, and updated origin settings (SNI) across our Akamai properties ahead of the cutover.
       - Wrote a Python Prometheus exporter for GitHub service health (Git operations, Actions, pull requests, issues), with dashboards and alerts, after GitHub outages kept disrupting the team's work.
+      - "Built an AI agent skill that triages alerts posted to a Slack channel: it reads the alert for its Grafana dashboard and runbook links, confirms the alert is firing in Alertmanager, queries Prometheus and the pod logs in Datadog for context, checks the runbook for outdated steps, and suggests how to resolve it."
       - "Automated credentials for new RDS and DocumentDB instances: admin and user passwords are generated and stored in HashiCorp Vault, and Terragrunt reads them at creation time, so nobody handles a secret by hand."
-      - Support the applications through releases, incidents and live sports peaks such as NFL games, and share the on-call rotation.
-      - Own their observability and alerting with Prometheus, Thanos, Grafana and Alertmanager, including SLOs, certificate expiry checks, and alert routing to Slack and incident tooling.
-      - "Manage the Akamai configuration they use: delivery properties, Global Traffic Management (GTM), Cloudlets, WAF security policies and TLS certificates."
-      - Deploy and run the AWS resources they need as code with Terraform and Terragrunt, maintain the GitHub Actions and Jenkins pipelines onto the shared EKS clusters, scale non-production down outside traffic windows to cut cost, and patch vulnerabilities on hosts and in code.
+      - Run observability and alerting, Akamai configuration and AWS infrastructure as code for the applications we support, and share the on-call through releases, incidents and live sports peaks such as NFL games.
 
   - name: Velv
     position: DevOps Engineer
@@ -115,7 +112,7 @@ skills:
   - name: Containers and Kubernetes
     keywords: [Kubernetes, Amazon EKS, OpenShift, k3s, Helm, Kustomize, Docker]
   - name: Cloud and edge
-    keywords: [AWS, Azure, "Akamai (Property Manager, GTM, Cloudlets, WAF, certificates)", OpenStack, Hetzner]
+    keywords: [AWS, Azure, Akamai, OpenStack, Hetzner]
   - name: Infrastructure as code
     keywords: [Terraform, OpenTofu, Terragrunt, Ansible]
   - name: CI/CD and GitOps
