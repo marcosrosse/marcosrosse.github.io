@@ -112,7 +112,7 @@ skills:
   - name: Containers and Kubernetes
     keywords: [Kubernetes, Amazon EKS, OpenShift, k3s, Helm, Kustomize, Docker]
   - name: Cloud and edge
-    keywords: [AWS, Azure, "Akamai (Property Manager, GTM, Cloudlets, WAF, certificates)", OpenStack, Hetzner]
+    keywords: [AWS, Azure, Akamai, OpenStack, Hetzner]
   - name: Infrastructure as code
     keywords: [Terraform, OpenTofu, Terragrunt, Ansible]
   - name: CI/CD and GitOps
